@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo Protegido</title>
+    <style>
+        #protected-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conteúdo Protegido</h1>
+    <p id="protected-content">Este é o conteúdo protegido. Você só deve ver isso se tiver acessado o link corretamente.</p>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const referrer = document.referrer;
+            const linkClicked = sessionStorage.getItem("linkClicked");
+
+            if (referrer.includes("index.html") && linkClicked) {
+                document.getElementById("protected-content").style.display = "block";
+            } else {
+                alert("Você precisa acessar o link na página inicial para ver este conteúdo.");
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>
